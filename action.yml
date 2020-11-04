@@ -6,7 +6,7 @@ inputs:
     required: true
     default: ''
 outputs:
-  acticle: # id of output
+  article: # id of output
     description: 'The content of the article generated'
 runs:
   using: 'docker'
