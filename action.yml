@@ -5,9 +5,6 @@ inputs:
     description: 'JSON string of the issue details'
     required: true
     default: ''
-outputs:
-  article: # id of output
-    description: 'The content of the article generated'
 runs:
   using: 'docker'
   image: 'Dockerfile'
