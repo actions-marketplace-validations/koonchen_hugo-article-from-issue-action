@@ -4,4 +4,4 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-ENTRYPOINT [ "python", "./main.py" ]
+ENTRYPOINT [ "python", "/usr/src/app/main.py" ]
