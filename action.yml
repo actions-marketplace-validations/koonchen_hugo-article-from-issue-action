@@ -1,0 +1,15 @@
+name: 'Generate a markdown post from issue for hexo'
+description: 'Generate a markdown post from issue for hexo'
+inputs:
+  issueJson:  # id of input
+    description: 'JSON string of the issue details'
+    required: true
+    default: ''
+outputs:
+  acticle: # id of output
+    description: 'The content of the article generated'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.issueJson }}
