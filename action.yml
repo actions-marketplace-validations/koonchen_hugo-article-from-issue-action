@@ -5,8 +5,13 @@ inputs:
     description: 'JSON string of the issue details'
     required: true
     default: ''
+  authorizedUser:
+    description: 'User ID of who can post article'
+    required: true
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.issueJson }}
+    - ${{ inputs.authorizedUser }}

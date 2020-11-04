@@ -12,8 +12,16 @@ def escape_newline(s):
 
 def main():
     issue_json = sys.argv[1]
+    user = sys.argv[2]
     issue = json.loads(issue_json)
     print(json.dumps(issue, indent=2))
+
+    if user != issue["user"]["login"] or "BlogPost" not in [
+        l["name"] for l in issue["labels"]
+    ]:
+        print(f"::set-output name=valid::false")
+        return
+
     tags = "\n".join(
         [
             "- " + l["name"][l["name"].find("/") + 1 :]
@@ -43,6 +51,7 @@ date: {datetime.fromisoformat(issue["created_at"][:-1]).strftime("%Y-%m-%d %X")}
     article_escaped = escape_newline(article)
     print(article)
     print(f"::set-output name=article::{article_escaped}")
+    print(f"::set-output name=valid::true")
 
 
 if __name__ == "__main__":
