@@ -8,7 +8,7 @@ import base64
 
 
 def main():
-    issue_json = str(base64.b64decode(sys.argv[1]))
+    issue_json = base64.b64decode(sys.argv[1]).decode("utf-8")
     user = sys.argv[2]
     issue = json.loads(issue_json)
     print(json.dumps(issue, indent=2))
@@ -45,7 +45,7 @@ date: {datetime.fromisoformat(issue["created_at"][:-1]).strftime("%Y-%m-%d %X")}
 
 {issue["body"]}
 """
-    article_escaped = base64.b64encode(article)
+    article_escaped = base64.b64encode(article.encode("utf-8")).decode("utf-8")
     print(article)
     print(f"::set-output name=article::{article_escaped}")
     print(f"::set-output name=valid::true")
