@@ -36,6 +36,7 @@ def main():
     article = f"""
 ---
 title: '{issue["title"]}'
+description: {issue["body"]}[0:10]
 tags:
 {tags}
 categories:
