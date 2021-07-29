@@ -33,12 +33,10 @@ def main():
             if l["name"].startswith("categories/")
         ]
     )
-    article = f"""
----title: '{issue["title"]}'
-tags:
-{tags}
-categories:
-{categories}
+    article = f"""---
+title: '{issue["title"]}'
+tags:{tags}
+categories:{categories}
 date: {datetime.fromisoformat(issue["created_at"][:-1]).strftime("%Y-%m-%d %X")}
 ---
 
